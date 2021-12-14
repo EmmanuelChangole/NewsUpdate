@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NewsUpdate</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_news">News</string>
+    <string name="nav_volunteer">Volunteer</string>
+    <string name="nav_project">Project</string>
+    <string name="nav_chat">Chat</string>
+    <string name="event">Upcoming events</string>
+    <string name="drawer_item_home">Home</string>
+    <string name="drawer_item_setting">Settings</string>
+    <string name="drawer_item_mini_drawer">Drawer</string>
+    <string name="drawer_item_compact_header">Header</string>
+    <string name="drawer_header">Header</string>
+    <string name="tvProfile">Update Profile</string>
+
+</resources>

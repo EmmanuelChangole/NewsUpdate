@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/root_layout"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:id="@+id/card_view"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="15dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/imgNews"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_home"
+                />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/card_view"
+            android:text="Title of event"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/root_layout"
+        android:layout_marginLeft="20dp"
+        android:text="Description content"
+        android:layout_marginRight="20dp"
+        android:textSize="17sp"
+        />
+    <ImageView
+        android:id="@+id/imgDate"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_date"
+        android:layout_below="@id/tvContent"
+        />
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/imgDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvContent"
+        android:layout_marginLeft="20dp"
+        android:text="Sat Dec 4,2021"
+        />
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location"
+        android:layout_toLeftOf="@id/tvLocation"
+        android:layout_marginRight="20dp"
+        />
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        />
+
+
+
+
+</RelativeLayout>
