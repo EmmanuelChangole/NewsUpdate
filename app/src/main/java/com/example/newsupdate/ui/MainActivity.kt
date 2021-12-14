@@ -3,6 +3,8 @@ package com.example.newsupdate.ui
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
@@ -38,10 +40,11 @@ import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity(),DuoMenuView.OnMenuClickListener {
-    private final var HOME_ID=1
-    private final var NEWS_ID =2
-    private final var NETWORK_ID=3
-    private final var CHATS_ID=4
+    private var HOME_ID=1
+    private var NEWS_ID =2
+    private var NETWORK_ID=3
+    private var CHATS_ID=4
+
     private lateinit var binding: ActivityMainBinding
    private lateinit var drawerLayout:DuoDrawerLayout
    private lateinit var toolbar: Toolbar
@@ -92,6 +95,9 @@ class MainActivity : AppCompatActivity(),DuoMenuView.OnMenuClickListener {
                 MaterialDialog(this).cornerRadius(20f).title(R.string.tvProfile).show{
                     customView(R.layout.update_profile)
                     maxWidth(R.dimen.max_width)
+
+
+
 
                 }
             }

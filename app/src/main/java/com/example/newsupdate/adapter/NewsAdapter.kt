@@ -2,15 +2,17 @@ package com.example.newsupdate.adapter
 
 import Articles
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import com.example.newsupdate.R
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.newsupdate.R
+import com.squareup.picasso.Picasso
 
-class NewsAdapter(articles:List<Articles>, context:Context,private val title:String,private val listener:TopicAdapter.ClickListener): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(articles:List<Articles>, context:Context, private val listener:NewsAdapter.ClickListener):RecyclerView.Adapter<NewsAdapter.ViewHolder>()
+{
     var articles: List<Articles>? = null
     private var context: Context? = null
     private var layoutInflater: LayoutInflater? = null
@@ -24,41 +26,48 @@ class NewsAdapter(articles:List<Articles>, context:Context,private val title:Str
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
-        val view: View =layoutInflater!!.inflate(R.layout.single_subject,parent,false)
+        val view: View =layoutInflater!!.inflate(R.layout.news_template,parent,false)
         return ViewHolder(view);
-
 
 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
+        var news=articles?.get(position)
+        holder.tvTitle?.text=news?.title
+        holder.tvDate?.text=news?.publishedAt
+        holder.tvContent?.text=news?.content
+        Picasso.get().load(news?.urlToImage).fit().into(holder.imgVIew)
 
-        var adapterHolder=TopicAdapter(context!!, articles!!)
-        adapterHolder.setItemClickListener(listener)
 
-        holder.recyclerView!!.adapter = adapterHolder
-        holder.recyclerView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        holder.recyclerView!!.setHasFixedSize(true);
-        holder.tvHeading!!.text=title
 
     }
 
-    override fun getItemCount(): Int
-    {
-       return 1
+    override fun getItemCount(): Int {
+      return articles!!.size
     }
+
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        var recyclerView: RecyclerView? = null
-        var tvHeading: TextView? = null
+        var imgVIew:ImageView?=null
+        var tvTitle:TextView?=null
+        var tvDate:TextView?=null
+        var tvContent:TextView?=null
+
         init {
-            recyclerView = itemView.findViewById<View>(R.id.rvChapters) as RecyclerView
-            tvHeading = itemView.findViewById<View>(R.id.tvSubjectName) as TextView
+            imgVIew=itemView.findViewById(R.id.imgNews)
+            tvTitle=itemView.findViewById(R.id.tvTitle)
+            tvDate=itemView.findViewById(R.id.tvDate)
+            tvContent=itemView.findViewById(R.id.tvContent)
         }
+
 
     }
 
+    interface ClickListener {
+        fun onItemClicked(articles: Articles)
+    }
 }

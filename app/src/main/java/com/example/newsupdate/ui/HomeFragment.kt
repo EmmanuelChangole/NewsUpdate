@@ -2,9 +2,7 @@ package com.example.newsupdate.ui
 
 import Articles
 import ParentAdapter
-import android.app.Dialog
 import android.content.Intent
-import android.icu.text.IDNA
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,20 +11,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.newsupdate.R
 import com.example.newsupdate.viewModel.HomeViewModel
-import com.example.newsupdate.adapter.NewsAdapter
+import com.example.newsupdate.adapter.NewsUpdateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.example.newsupdate.adapter.TopicAdapter
-import com.example.newsupdate.model.NewsBase
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.dialog.MaterialDialogs
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
@@ -77,7 +71,7 @@ class HomeFragment : Fragment(),ChildAdapter.ItemClickListener,TopicAdapter.Clic
 
         viewModel.getSports()!!.observe(viewLifecycleOwner,{
             val articles=it.articles
-            var adapter= context?.let { NewsAdapter(articles,
+            var adapter= context?.let { NewsUpdateAdapter(articles,
                 requireContext(),"Upcoming events",itemClickListener) }
             val manager = LinearLayoutManager(context)
             rvEvent!!.layoutManager=manager

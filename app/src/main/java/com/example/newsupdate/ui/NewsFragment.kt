@@ -1,15 +1,24 @@
 package com.example.newsupdate.ui
 
+import Articles
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newsupdate.viewModel.NewsViewModel
 import com.example.newsupdate.R
+import com.example.newsupdate.adapter.NewsAdapter
+import com.example.newsupdate.databinding.NewsFragmentBinding
 
-class NewsFragment : Fragment() {
+class NewsFragment : Fragment(),NewsAdapter.ClickListener {
+
+    private lateinit var binding:NewsFragmentBinding
+    private lateinit var mRecycler:RecyclerView
 
     companion object {
         fun newInstance() = NewsFragment()
@@ -21,13 +30,42 @@ class NewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.news_fragment, container, false)
+
+        binding= NewsFragmentBinding.inflate(layoutInflater)
+
+       return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mRecycler=binding.newsRecycler
+        viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
+        viewModel.getPolitical()?.observe(viewLifecycleOwner, Observer {
+         var mAdapter= context?.let { it1 -> NewsAdapter(it.articles, it1,this) }
+         mRecycler.adapter=mAdapter
+         mRecycler.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+          mRecycler.setHasFixedSize(true);
+
+        })
+
+
+
+
+
+    }
+
+    override fun onItemClicked(articles: Articles)
+    {
+
+
+
+    }
+
 
 }
