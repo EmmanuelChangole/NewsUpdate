@@ -39,6 +39,9 @@ class NewsAdapter(articles:List<Articles>, context:Context, private val listener
         holder.tvDate?.text=news?.publishedAt
         holder.tvContent?.text=news?.content
         Picasso.get().load(news?.urlToImage).fit().into(holder.imgVIew)
+        holder.itemView.setOnClickListener{
+          listener.onItemClicked(news as Articles)
+        }
 
 
 
@@ -63,6 +66,8 @@ class NewsAdapter(articles:List<Articles>, context:Context, private val listener
             tvDate=itemView.findViewById(R.id.tvDate)
             tvContent=itemView.findViewById(R.id.tvContent)
         }
+
+
 
 
     }
