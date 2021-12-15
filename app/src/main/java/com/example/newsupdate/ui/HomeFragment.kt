@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.example.newsupdate.R
@@ -31,6 +32,7 @@ class HomeFragment : Fragment(),ChildAdapter.ItemClickListener,TopicAdapter.Clic
     private var rvEvent:RecyclerView?=null
     lateinit var itemListener:ChildAdapter.ItemClickListener
     lateinit var itemClickListener:TopicAdapter.ClickListener
+    lateinit var mainProgressBar:ProgressBar
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -56,6 +58,7 @@ class HomeFragment : Fragment(),ChildAdapter.ItemClickListener,TopicAdapter.Clic
         super.onViewCreated(view, savedInstanceState)
         rvSubject=view.findViewById(R.id.rvSubject)
         rvEvent=view.findViewById(R.id.rvEvent)
+        mainProgressBar=view.findViewById(R.id.mainProgress)
         itemListener=this
         itemClickListener=this
         viewModel.getEntertainment()!!.observe(viewLifecycleOwner, Observer {
@@ -71,6 +74,7 @@ class HomeFragment : Fragment(),ChildAdapter.ItemClickListener,TopicAdapter.Clic
 
         viewModel.getSports()!!.observe(viewLifecycleOwner,{
             val articles=it.articles
+            mainProgressBar.visibility=View.GONE
             var adapter= context?.let { NewsUpdateAdapter(articles,
                 requireContext(),"Upcoming events",itemClickListener) }
             val manager = LinearLayoutManager(context)

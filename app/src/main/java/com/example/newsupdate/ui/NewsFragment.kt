@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class NewsFragment : Fragment(),NewsAdapter.ClickListener {
 
     private lateinit var binding:NewsFragmentBinding
     private lateinit var mRecycler:RecyclerView
+    private lateinit var newsProgress:ProgressBar
 
     companion object {
         fun newInstance() = NewsFragment()
@@ -45,12 +47,14 @@ class NewsFragment : Fragment(),NewsAdapter.ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mRecycler=binding.newsRecycler
+        newsProgress=binding.newsProgress
         viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
         viewModel.getPolitical()?.observe(viewLifecycleOwner, Observer {
          var mAdapter= context?.let { it1 -> NewsAdapter(it.articles, it1,this) }
          mRecycler.adapter=mAdapter
          mRecycler.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-          mRecycler.setHasFixedSize(true);
+          mRecycler.setHasFixedSize(true)
+          newsProgress.visibility=View.GONE
 
         })
 
