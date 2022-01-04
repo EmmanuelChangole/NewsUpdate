@@ -1,7 +1,7 @@
 package com.example.newsupdate.retrofit
 
 import com.example.newsupdate.BuildConfig
-import com.example.newsupdate.interfaces.ApiInterface
+import com.example.newsupdate.interfaces.NewsService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -29,10 +29,10 @@ object RetrofitClient
             .addConverterFactory(GsonConverterFactory.create())
     }
 
-    val apiInterface: ApiInterface by lazy {
+    val NEWS_SERVICE: NewsService by lazy {
         retrofitClient
             .build()
-            .create(ApiInterface::class.java)
+            .create(NewsService::class.java)
     }
 
 
