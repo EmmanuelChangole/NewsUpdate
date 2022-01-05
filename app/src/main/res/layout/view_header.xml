@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:text="John Doe"
+        android:text="Gloria Orwoba"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/duo_view_header_text_title"
         android:layout_marginLeft="32dp"
-        android:text="Manager"
+        android:text="Youth Policy Analyst"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/white"
         android:textStyle="italic"/>
@@ -41,7 +41,7 @@
         android:layout_below="@id/duo_view_header_border"
         android:id="@+id/imgProfile"
         android:layout_width="150dp"
-        android:src="@drawable/ic_event"
+        android:src="@drawable/gloria"
         android:layout_height="150dp"
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"/>
